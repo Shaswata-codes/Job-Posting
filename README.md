@@ -1,127 +1,174 @@
----
+# Job Board App
 
-# Job Board App with Next.js & Prisma
+A modern full-stack job platform built with **Next.js, Prisma, PostgreSQL, TailwindCSS, and TypeScript**. The application allows users to discover job opportunities, search and filter listings, post jobs, and manage applications through a personalized dashboard.
 
-    <img src="https://img.shields.io/badge/-Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" />
-    <img src="https://img.shields.io/badge/-Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma" />
-    <img src="https://img.shields.io/badge/-PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
-    <img src="https://img.shields.io/badge/-React_Hooks-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React Hooks" />
-    <img src="https://img.shields.io/badge/-TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss" alt="Tailwind CSS" />
-  </div>
-  <h3 align="center">Build a Job Board App with Next.js, Prisma, PostgreSQL, and TailwindCSS</h3>
-  <div align="center">
-    Follow the full video tutorial on 
-    <a href="https://youtu.be/YOUR_VIDEO_ID" target="_blank"><b>YouTube</b></a>
-  </div>
-  <br />
-</div>
+## 🚀 Overview
 
-## 📋 Table of Contents
+This project is a full-stack **Job Board Application** designed to simplify the process of connecting job seekers with employers.
 
-1. [Introduction](#-introduction)
-2. [Tech Stack](#-tech-stack)
-3. [Features](#-features)
-4. [Quick Start](#-quick-start)
-5. [Screenshots](#-screenshots)
-6. [Deployment](#-deployment)
+Users can browse available job opportunities, search using different filters, view detailed job information, and apply for suitable positions. Authenticated users can also post job openings and manage their listings and applications from their dashboard.
 
----
-
-## 🚀 Introduction
-
-In this tutorial, you'll learn how to build a modern **Job Board App** using **Next.js**, **Prisma**, **PostgreSQL**, and **TailwindCSS**. You'll cover **real-world database relations, complex queries, and a complete CRUD workflow**, and implement **dynamic search filters** and **user applications**.
-
-🎥 Watch the full tutorial: [YouTube](https://youtu.be/YOUR_VIDEO_ID)
-
----
+The application uses **Next.js** for both frontend and server-side functionality, with **Prisma** handling database operations and **PostgreSQL** providing the relational data layer.
 
 ## ⚙️ Tech Stack
 
-* **Next.js 15** – For building the React fullstack app with server components
-* **Prisma** – For database ORM and relations
-* **PostgreSQL** – As the relational database
-* **TailwindCSS** – For styling with utility-first CSS
-* **React Hooks** – For managing client-side state & interactivity
-* **TypeScript** – Type safety and tooling
-* **NextAuth** or custom session handling – For user authentication (depending on your implementation)
+* **Next.js 15** — Full-stack React framework
+* **TypeScript** — Type-safe development
+* **Prisma ORM** — Database access and relationship management
+* **PostgreSQL** — Relational database
+* **TailwindCSS** — UI styling
+* **React Hooks** — Client-side state and interactivity
+* **Authentication** — Secure user authentication and authorization
 
----
+## ✨ Features
 
-## ⚡️ Features
+### 🔍 Job Search & Filtering
 
-* 📝 **Post Job Offers**
-  Authenticated users can post new job offers with title, description, type, and location.
+* Search jobs by keywords
+* Filter jobs by employment type
+* Filter by location
+* Dynamic search results
 
-* 🔍 **Advanced Search**
-  Filter jobs by **keyword**, **type** (Full-time, Part-time, Contract), and **location** — all with Prisma query filters.
+### 📝 Job Posting
 
-* 👤 **User Dashboard**
-  Users can view their posted jobs and see how many applicants each job has received.
+* Authenticated users can create job listings
+* Add job title, description, type, location, and other details
+* Edit and manage posted jobs
 
-* ✅ **Job Applications**
-  Users can apply for any job. The dashboard lists all applications with statuses.
+### 📄 Job Details
 
-* 🔄 **Dynamic Routes & Pages**
-  Each job has its own dynamic detail page with full information and "Apply" button.
+* Dedicated page for every job listing
+* View complete job information
+* Apply directly from the job details page
 
-* 🔐 **Authentication & Authorization**
-  Users must be signed in to post jobs or apply for them.
+### 👤 User Dashboard
 
----
+* View jobs posted by the user
+* Track job applications
+* View applicant information
+* Manage job listings and applications
 
-## 👌 Quick Start
+### 📬 Job Applications
+
+* Apply for available positions
+* Track submitted applications
+* Application status management
+
+### 🔐 Authentication & Authorization
+
+* User authentication
+* Protected routes
+* Role-based access to job posting and application functionality
+
+## 🗄️ Database
+
+The application uses **PostgreSQL** with **Prisma ORM** to manage relationships between users, jobs, and applications.
+
+Example relationship structure:
+
+```text
+User
+ ├── Posted Jobs
+ └── Applications
+        │
+        ▼
+       Jobs
+```
+
+This allows the application to efficiently manage job listings, applicants, and application statuses.
+
+## ⚡ Getting Started
 
 ### Prerequisites
 
-* [Node.js](https://nodejs.org/)
-* [PostgreSQL Database](https://www.postgresql.org/)
-* [Prisma CLI](https://www.prisma.io/docs/getting-started)
-* [Next.js](https://nextjs.org/)
+Make sure you have the following installed:
 
-### Clone and Run
+* Node.js
+* PostgreSQL
+* npm
+
+### Installation
+
+Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/job-board-next-prisma.git
-cd job-board-next-prisma
+git clone https://github.com/yourusername/job-board.git
+cd job-board
+```
+
+Install dependencies:
+
+```bash
 npm install
+```
 
-# Configure your database in .env
+Configure your environment variables in `.env`:
+
+```env
+DATABASE_URL="your_postgresql_database_url"
+```
+
+Generate the Prisma client:
+
+```bash
 npx prisma generate
-npx prisma migrate dev
+```
 
+Run database migrations:
+
+```bash
+npx prisma migrate dev
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-Your app will be available at: [http://localhost:3000](http://localhost:3000)
+Open:
 
----
+```text
+http://localhost:3000
+```
 
 ## 🖼️ Screenshots
-<img width="1347" alt="Home" src="https://github.com/user-attachments/assets/dcde382d-f842-4493-af5e-0b956cb89b46" />
-<img width="1243" alt="Dashboard" src="https://github.com/user-attachments/assets/29da6fbc-6b8c-4475-88ad-a9b700461401" />
 
----
+### Home Page
+
+<img width="1347" alt="Home" src="https://github.com/user-attachments/assets/dcde382d-f842-4493-af5e-0b956cb89b46" />
+
+### Dashboard
+
+<img width="1243" alt="Dashboard" src="https://github.com/user-attachments/assets/29da6fbc-6b8c-4475-88ad-a9b700461401" />
 
 ## ☁️ Deployment
 
-### Deploy on Vercel
+The application can be deployed using **Vercel**.
 
-1. Push your code to GitHub
-2. Go to [Vercel](https://vercel.com/)
-3. Import your repository
-4. Set up your database connection in Vercel Environment Variables
-5. Click **Deploy**
+Deployment steps:
 
-Your live app will be hosted on a custom subdomain (e.g. `https://your-job-board.vercel.app`)
+1. Push the project to GitHub
+2. Import the repository into Vercel
+3. Configure the required environment variables
+4. Connect your PostgreSQL database
+5. Deploy the application
 
----
+## 🔗 Resources
 
-## 🔗 Useful Links
+* Next.js
+* Prisma
+* PostgreSQL
+* TailwindCSS
+* Vercel
 
-* [Next.js Documentation](https://nextjs.org/docs)
-* [Prisma Documentation](https://www.prisma.io/docs)
-* [PostgreSQL Docs](https://www.postgresql.org/docs/)
-* [Tailwind CSS Docs](https://tailwindcss.com/)
-* [Vercel](https://vercel.com/)
+## 📌 Project Highlights
 
----
+* Full-stack application built with Next.js
+* Relational database architecture using Prisma and PostgreSQL
+* Dynamic job search and filtering
+* Job posting and application workflow
+* User dashboard
+* Authentication and authorization
+* Responsive UI with TailwindCSS
+* Type-safe development with TypeScript
